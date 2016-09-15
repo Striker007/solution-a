@@ -1,4 +1,4 @@
-.PHONY: build
+.PHONY: build test
 
 export GOPATH := ${PWD}/vendor:${PWD}
 export GOBIN := ${PWD}/vendor/bin
@@ -13,4 +13,5 @@ build:
 	go build -v -o ./bin/$(NAME) ./src/*.go
 	@echo Done.
 
-
+test:
+	@go test test/*.go

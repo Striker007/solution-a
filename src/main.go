@@ -9,9 +9,6 @@ import (
         "config"
 )
 
-func main() {
-   // test struct
-   c := config.Main {20, 16}
-   fmt.Sprintf("(%d, %d)", c.x, c.y)
+func main() { 
+    // TODO config module
 }
-
