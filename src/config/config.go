@@ -1,7 +1,7 @@
 
 package config
 
-   type T struct {
+   type Config struct {
           A string
           B struct {
                RenamedC int `yaml:"c"`
