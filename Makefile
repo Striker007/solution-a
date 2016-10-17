@@ -1,4 +1,4 @@
-.PHONY: build test
+.PHONY: build test init
 
 export GOPATH := ${PWD}/vendor:${PWD}
 export GOBIN := ${PWD}/vendor/bin
@@ -7,6 +7,9 @@ export GOBIN := ${PWD}/vendor/bin
 NAME := solution-a
 
 default: build
+
+init:
+        go get github.com/go-sql-driver/mysql
 
 build:
 	@echo Building...
