@@ -9,11 +9,11 @@ NAME := solution-a
 default: build
 
 init:
-        go get github.com/go-sql-driver/mysql
+	@go get github.com/go-sql-driver/mysql
 
 build:
 	@echo Building...
-	go build -v -o ./bin/$(NAME) ./src/*.go
+	go build -v -o ./bin/$(NAME) ./src/main.go
 	@echo Done.
 
 test:
