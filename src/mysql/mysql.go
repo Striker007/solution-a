@@ -5,7 +5,6 @@
 package mysql
 
 import (
-"os"
 "fmt"
 "database/sql"
 )
@@ -16,15 +15,15 @@ func ConnectToMysql() {
 
     // TODO config module
 
-    dsn := os.Getenv("MYSQL_DSN") // root:my-secret-pw@/test
-    fmt.Println(dsn)
+    dsn := "root:root@(127.0.0.1:3306)/test"
+    fmt.Println("Connect by - " + dsn)
     db, err := sql.Open("mysql", dsn)
 
     if (err != nil) {
     	fmt.Println(err)
     }
 
-    rows, err := db.Query("SELECT id FROM test WHERE 1 LIMIT 1")
+    rows, err := db.Query("SELECT FirstName FROM test WHERE 1 LIMIT 1")
     defer rows.Close()
     
     if (err != nil) {
@@ -33,9 +32,9 @@ func ConnectToMysql() {
 
     if(err == nil) {
     	for rows.Next() {
-    		var id int
-    		_ = rows.Scan(&id)
-    		fmt.Print(id)
+    		var FirstName string
+    		_ = rows.Scan(&FirstName)
+    		fmt.Println(FirstName)
     	}
     }
 }

@@ -1,0 +1,15 @@
+version: '2'
+services:
+  development:
+    container_name: "solution-go"
+    image: golang:1.6
+    depends_on:
+      - mysql
+    volumes:
+      - .:/solution-a
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
