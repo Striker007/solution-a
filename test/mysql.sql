@@ -8,3 +8,6 @@ FirstName varchar(255),
 gender ENUM('Man', 'Woman'),
 PRIMARY KEY (id)
 )
+
+INSERT INTO `test` (`LastName`, `FirstName`, `gender`) VALUES ('Ivan', 'Ivanov', 'Man');
+

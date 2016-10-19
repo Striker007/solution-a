@@ -2,11 +2,11 @@ version: '2'
 services:
   development:
     container_name: "solution-go"
-    image: golang:1.6
-    depends_on:
-      - mysql
+    build: .
     volumes:
       - .:/solution-a
+    depends_on:
+      - mysql
   mysql:
     image: mysql
     ports:
