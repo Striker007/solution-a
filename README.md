@@ -10,9 +10,11 @@
 
 * Install Go 1.6+ https://golang.org/
 * Install Docker
-* `$ docker-compose up`
 * `$ git clone git@github.com:Striker007/solution-a`
 * `$ make compile` (compile under Docker)
 * `$ make` (compile native)
 * `$ bin/solution-a`
-* Test DB [test/mysql.sql]
+
+* Test DB
+* `$ docker-compose up` run MySQL
+* run from some client [test/mysql.sql]
