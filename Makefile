@@ -9,6 +9,8 @@ default: build
 
 deps:
 	@go get github.com/go-sql-driver/mysql
+	@go get github.com/icrowley/fake
+	@go get gopkg.in/yaml.v2
 
 DP := /usr/src/solution
 build:  deps
