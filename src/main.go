@@ -5,33 +5,34 @@
 package main
 
 import (
-	"fmt"
-    _ "mysql"
-    "github.com/icrowley/fake"
-    "gopkg.in/yaml.v2"
+    "config"
+    "solutionA"
 )
 
-var data = `
-tables:
-    test:
-      LastName: LastName
-      FirstName: FirstName
-      gender: Gender
-`
-
 func main() {
-    // TODO config module
-    // mysql.ConnectToMysql();]
+    // TODO
 
-    fmt.Println(fake.FirstName())
+    // get  command line args
 
-    var tables interface{}
+    // init app configs
+    // ... think about smth like config.getTableName
+    tableName := config.Read("/home/vagrant/dumps/solution-a/config/tables.yaml")
 
-    err := yaml.Unmarshal([]byte(data), &tables)
-    if err != nil {
-            fmt.Printf("error: %v", err)
+    // connect to db
+    // mysql.ConnectToMysql();
+
+    // doing some app action
+    if "" != tableName {
+        solutionA.Fill(tableName)
+        // like solution-a.job
+            // fake 1 table
+                // get table schema from config
+                // generate fake data
+                // update DB
+            // generate yaml for fake'ing
+                // read db schema
+                // write config
     }
 
-    fmt.Printf("--- table:\n%v\n\n", tables.(map[interface {}]interface {}))
-
+    // return exit code OR some info
 }

@@ -20,6 +20,7 @@ build:  deps
 	@echo Done.
 
 compile:
+	@# TODO GOOS, GOARCH - should to be in config
 	@docker run --rm -v $(PWD):$(DP) -w $(DP) -e GOPATH=$(DP) -e GOOS="darwin" -e GOARCH="amd64" golang:1.6 sh -c 'make build'
 
 test:
