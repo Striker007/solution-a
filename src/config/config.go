@@ -4,19 +4,22 @@
 package config
 
 import (
-    "fmt"
-    "os"
-    "io/ioutil"
-    // "parser"
-    "strings"
+    // "fmt"
+    // "os"
+    // "io/ioutil"
+    "yaml_parser"
+    // "strings"
+    "errors"
 )
 
-func Read(fName string) (line string) {
+var params map[string]interface{}
 
-    if len(fName) > 0 {
+func Init(configFile string) (error) {
 
-        f, fErr := os.Open(fName)
-        data, fErr := ioutil.ReadFile(fName)
+    if len(configFile) > 0 {
+
+        f, fErr := os.Open(configFile)
+        data, fErr := ioutil.ReadFile(configFile)
         if fErr != nil {
             fmt.Fprintf(os.Stderr,  "config : %v\n", fErr)
         }
@@ -27,10 +30,25 @@ func Read(fName string) (line string) {
             case 0:
                 continue
             case 1:
-                return line
+                tableName = line
+                return true
             }
         }
         f.Close()
     }
-    return ""
+    return false
+}
+
+func IsEmpty() {
+    cfg, err := config.Get("unknown_param")
+    if err != nil {
+        fmt.Printf("config err: \n%v\n", err)
+    }
+}
+
+func Get(paramName string) (string, error) {
+    if len(params) == 0  {
+        return "", errors.New("parameter list is empty, please Initialize config")
+    }
+    return "a", nil
 }

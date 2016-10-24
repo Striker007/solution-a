@@ -5,34 +5,34 @@
 package main
 
 import (
-    "config"
+    "fmt"
+    "os"
     "solutionA"
 )
 
+const EXIT_NORMAL int = 0
+const EXIT_ERR int = 6
+const CONFIG string = "/home/vagrant/dumps/solution-a/config/tables.yaml"
+
 func main() {
-    // TODO
 
-    // get  command line args
+    helpMessage := "NAME solution-a \n fake data generator \n" +
+    "SYNOPSIS \n solution-a [OPTION]...\n" +
+    "DESCRIPTION \n fill your database with fake data \n" +
+    "OPTIONS \n fillone - fill one table from config \n\n"
 
-    // init app configs
-    // ... think about smth like config.getTableName
-    tableName := config.Read("/home/vagrant/dumps/solution-a/config/tables.yaml")
-
-    // connect to db
-    // mysql.ConnectToMysql();
-
-    // doing some app action
-    if "" != tableName {
-        solutionA.Fill(tableName)
-        // like solution-a.job
-            // fake 1 table
-                // get table schema from config
-                // generate fake data
-                // update DB
-            // generate yaml for fake'ing
-                // read db schema
-                // write config
+    args := os.Args[1:]
+    for _, arg := range args {
+        switch arg {        
+        case "fillone":
+            errA := solutionA.FillOne()
+            if nil != errA {
+                fmt.Printf("something going wrong: %v\n\n", errA)
+                os.Exit(EXIT_ERR)
+            }
+        }          
     }
 
-    // return exit code OR some info
+    fmt.Print(helpMessage)
+    os.Exit(EXIT_ERR)
 }

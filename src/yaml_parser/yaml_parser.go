@@ -1,18 +1,18 @@
 /**
 * @author Striker007
 */
-package parser
+package yaml_parser
 
 import (
     "fmt"
     "gopkg.in/yaml.v2"
 )
 
-func Parse(yamlLine string) (parsedLine interface{}) {
+func ParseYaml(yamlLine string) (parsedLine interface{}) {
 
     err := yaml.Unmarshal([]byte(yamlLine), &parsedLine)
     if err != nil {
-            fmt.Printf("error: %v", err)
+            fmt.Printf("Parser error: %v", err)
     }
     return
 }
